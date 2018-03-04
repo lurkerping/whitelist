@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: whitelist
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  servlet:
+    context-path: /whitelist
+  port: 6666
+
+---
+spring:
+  profiles: dev
+  jpa:
+    database: MYSQL
+    show_sql: true
+    generate-ddl: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/whitelist?useSSL=false
+    username: root
+    password: 123456
+
+---
+spring:
+  profiles: ut
+  jpa:
+    database: H2
+    show_sql: false
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=TRUE

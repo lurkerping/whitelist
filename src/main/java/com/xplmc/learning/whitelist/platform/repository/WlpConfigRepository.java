@@ -2,6 +2,7 @@ package com.xplmc.learning.whitelist.platform.repository;
 
 import com.xplmc.learning.whitelist.platform.entity.WlpConfig;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**
  * system config table repository class
@@ -9,5 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * @author luke
  * @date 2018/3/4
  */
+@RepositoryRestResource(path = "wlp-config")
 public interface WlpConfigRepository extends PagingAndSortingRepository<WlpConfig, Long> {
 }

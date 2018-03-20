@@ -6,11 +6,12 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    open-in-view: false
 
 server:
   servlet:
     context-path: /whitelist
-  port: 6666
+  port: 8110
 
 ---
 spring:

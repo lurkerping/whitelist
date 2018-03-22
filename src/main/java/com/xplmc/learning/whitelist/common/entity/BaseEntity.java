@@ -15,7 +15,6 @@ import java.io.Serializable;
  * common entity attributes
  *
  * @author luke
- * @date 2018/3/4
  */
 @Data
 @MappedSuperclass

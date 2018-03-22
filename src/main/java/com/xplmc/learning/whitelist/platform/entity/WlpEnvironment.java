@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * system config table
+ * whitelist environment table
  *
  * @author luke
  */
@@ -19,7 +19,7 @@ import java.io.Serializable;
 @RequiredArgsConstructor(staticName = "of")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
-public class WlpConfig extends BaseEntity implements Serializable {
+public class WlpEnvironment extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1154286229272794616L;
 
@@ -28,28 +28,23 @@ public class WlpConfig extends BaseEntity implements Serializable {
      */
     @Id
     @GeneratedValue
-    private Long configId;
+    private Long envId;
 
     /**
-     * config type, single line or multi-line
+     * environment code, such as: dev/sit/uat
      */
     @NonNull
-    private String configType;
+    private String envCode;
 
     /**
-     * config code
+     * environment desc
      */
     @NonNull
-    private String configCode;
+    private String envDesc;
 
     /**
-     * config name
+     * environment comment
      */
-    private String configName;
-
-    /**
-     * create or update comment
-     */
-    private String configComment;
+    private String envComment;
 
 }

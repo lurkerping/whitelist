@@ -17,11 +17,10 @@ import java.util.Optional;
  * test class for WlpConfigRepository
  *
  * @author luke
- * @date 2018/3/4
  */
+@ActiveProfiles(profiles = "ut")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = WhitelistApplication.class)
-@ActiveProfiles(profiles = "ut")
 @Slf4j
 public class WlpConfigRepositoryTest {
 
@@ -34,7 +33,7 @@ public class WlpConfigRepositoryTest {
         WlpConfig wlpConfig = WlpConfig.of("single", "count");
         wlpConfig = wlpConfigRepository.save(wlpConfig);
         Assert.assertNotNull(wlpConfig);
-        Assert.assertTrue(wlpConfig.getId() > 0);
+        Assert.assertTrue(wlpConfig.getConfigId() > 0);
     }
 
     @Test
@@ -43,7 +42,7 @@ public class WlpConfigRepositoryTest {
         WlpConfig wlpConfig = WlpConfig.of("single", code);
         wlpConfig = wlpConfigRepository.save(wlpConfig);
 
-        Optional<WlpConfig> optionalWlpConfig = wlpConfigRepository.findById(wlpConfig.getId());
+        Optional<WlpConfig> optionalWlpConfig = wlpConfigRepository.findById(wlpConfig.getConfigId());
         Assert.assertTrue(optionalWlpConfig.isPresent());
         Assert.assertEquals(code, optionalWlpConfig.get().getConfigCode());
 

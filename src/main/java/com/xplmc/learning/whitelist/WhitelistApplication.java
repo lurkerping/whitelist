@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * whitelist management system bootstrap class
  *
  * @author luke
- * @date 2018/3/4
  */
 @SpringBootApplication
 public class WhitelistApplication {

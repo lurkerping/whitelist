@@ -3,8 +3,8 @@
 <head th:fragment="html-head">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Layout</title>
-    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">White List Admin</title>
+    <meta name="apple-mobile-web-app-title" content="白名单后台管理系统"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>

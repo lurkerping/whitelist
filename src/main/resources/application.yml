@@ -7,7 +7,8 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
-
+  thymeleaf:
+    mode: HTML5
 server:
   servlet:
     context-path: /whitelist
@@ -29,7 +30,7 @@ spring:
 spring:
   profiles: dev_desk
   datasource:
-    url: jdbc:mysql://192.168.1.102:3306/whitelist?useSSL=false
+    url: jdbc:mysql://192.168.1.104:3306/whitelist?useSSL=false
 
 ---
 spring:

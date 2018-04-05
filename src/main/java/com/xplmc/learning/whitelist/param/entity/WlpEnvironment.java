@@ -1,4 +1,4 @@
-package com.xplmc.learning.whitelist.platform.entity;
+package com.xplmc.learning.whitelist.param.entity;
 
 import com.xplmc.learning.whitelist.common.entity.BaseEntity;
 import lombok.*;

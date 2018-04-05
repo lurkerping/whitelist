@@ -1,6 +1,7 @@
-package com.xplmc.learning.whitelist.platform.repository;
+package com.xplmc.learning.whitelist.param.repository;
 
-import com.xplmc.learning.whitelist.platform.entity.WlpEnvironment;
+import com.xplmc.learning.whitelist.common.constant.RequestMappingConstants;
+import com.xplmc.learning.whitelist.param.entity.WlpEnvironment;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -9,6 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  *
  * @author luke
  */
-@RepositoryRestResource(path = "wlp-environment")
+@RepositoryRestResource(path = RequestMappingConstants.PATH_WLP_ENVIRONMENT)
 public interface WlpEnvironmentRepository extends PagingAndSortingRepository<WlpEnvironment, Long> {
 }

@@ -1,7 +1,7 @@
-package com.xplmc.learning.whitelist.platform.repository;
+package com.xplmc.learning.whitelist.param.repository;
 
 import com.xplmc.learning.whitelist.WhitelistApplication;
-import com.xplmc.learning.whitelist.platform.entity.WlpConfig;
+import com.xplmc.learning.whitelist.param.entity.WlpConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

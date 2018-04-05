@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:fragment="html-head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Layout</title>
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" th:href="@{/amaze-ui/i/favicon.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/amaze-ui/i/app-icon72x72@2x.png}">
+    <link rel="stylesheet" th:href="@{/amaze-ui/css/amazeui.min.css}"/>
+    <link rel="stylesheet" th:href="@{/amaze-ui/css/admin.css}">
+</head>
+<body>
+
+<header th:replace="fragments/header :: header">Header</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div th:replace="fragments/sidebar :: sidebar">Sidebar</div>
+    <!-- sidebar end -->
+
+    <div class="admin-content">
+        <!-- content start -->
+        <div layout:fragment="content" id="content"></div>
+        <!-- content end -->
+
+        <!-- footer start -->
+        <footer th:replace="fragments/footer :: footer">Footer</footer>
+        <!-- footer end -->
+    </div>
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+   data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+<script th:src="@{/amaze-ui/js/jquery.min.js}"></script>
+<script th:src="@{/amaze-ui/js/amazeui.min.js}"></script>
+<script th:src="@{/amaze-ui/js/app.js}"></script>
+</body>
+</html>

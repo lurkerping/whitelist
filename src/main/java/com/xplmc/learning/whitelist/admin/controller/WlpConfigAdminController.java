@@ -1,6 +1,7 @@
 package com.xplmc.learning.whitelist.admin.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.xplmc.learning.whitelist.common.constant.RequestMappingConstants.*;
@@ -14,7 +15,7 @@ import static com.xplmc.learning.whitelist.common.constant.RequestMappingConstan
 @RequestMapping(PATH_CONTROLLER_ADMIN + PATH_MODULE_PARAM + PATH_WLP_CONFIG)
 public class WlpConfigAdminController {
 
-    @RequestMapping("/index.html")
+    @GetMapping("/index.html")
     public String index() {
         return "admin-table";
     }

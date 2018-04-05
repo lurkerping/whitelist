@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * whitelist environment table
+ * system menu table
  *
  * @author luke
  */
@@ -19,37 +19,43 @@ import java.io.Serializable;
 @RequiredArgsConstructor(staticName = "of")
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = false)
-public class WlpEnvironment extends BaseEntity implements Serializable {
+public class WlpMenu extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1154286229272794616L;
+    private static final long serialVersionUID = 550203084989291526L;
+
+    /**
+     * first level menu's parent menu id
+     */
+    public static final Long FIRST_LEVEL_MENU_PID = -1L;
 
     /**
      * primary key, auto generated
      */
     @Id
     @GeneratedValue
-    private Long envId;
+    private Long menuId;
 
     /**
-     * environment code, such as: dev/sit/uat
+     * menu parent id
+     * -1 means first level menu
      */
     @NonNull
-    private String envCode;
+    private Long menuPid;
 
     /**
-     * environment name
+     * menu name
      */
     @NonNull
-    private String envName;
+    private String menuName;
 
     /**
-     * environment desc
+     * menu description
      */
-    private String envDesc;
+    private String menuDesc;
 
     /**
-     * environment comment
+     * create or update comment
      */
-    private String envComment;
+    private String menuComment;
 
 }

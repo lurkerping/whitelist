@@ -26,4 +26,9 @@ public final class RequestMappingConstants {
      * path for wlpEnvironment
      */
     public static final String PATH_WLP_ENVIRONMENT = "/wlp-environment";
+
+    /**
+     * path for wlpMenu
+     */
+    public static final String PATH_WLP_MENU = "/wlp-menu";
 }

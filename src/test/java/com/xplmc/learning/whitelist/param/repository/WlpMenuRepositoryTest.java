@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -46,5 +47,16 @@ public class WlpMenuRepositoryTest {
         Assert.assertTrue(optionalWlpMenu.isPresent());
         Assert.assertEquals(code, optionalWlpMenu.get().getMenuName());
     }
+
+    @Test
+    public void testFindByMenuPid() {
+        String code = "count";
+        WlpMenu wlpMenu = WlpMenu.of(WlpMenu.FIRST_LEVEL_MENU_PID, code);
+        wlpMenu = wlpMenuRepository.save(wlpMenu);
+
+        List<WlpMenu> wlpMenuList = wlpMenuRepository.findByMenuPid(wlpMenu.getMenuPid());
+        Assert.assertTrue(wlpMenuList.size() > 0);
+    }
+
 
 }

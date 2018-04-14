@@ -27,4 +27,9 @@ public class WlpMenuAdminController {
         return "admin-menu";
     }
 
+    @GetMapping("/add.html")
+    public String add() {
+        return "admin-menu-add";
+    }
+
 }

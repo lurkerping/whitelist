@@ -15,13 +15,13 @@
                 <ul th:if="${sidebarMenu.dropDown}" class="am-list am-collapse admin-sidebar-sub am-in"
                     th:id="|collapse-nav-${sidebarMenuStat.count}|">
                     <li th:each="subMenu : ${sidebarMenu.subMenuDtoList}">
-                        <a href="#">
+                        <a th:href="@{${subMenu.menuUrl}}">
                             <span th:class="${subMenu.menuIconClass}"></span>
                             <span th:text="${subMenu.menuName}"></span>
                         </a>
                     </li>
                 </ul>
-                <a th:unless="${sidebarMenu.dropDown}" href="#">
+                <a th:unless="${sidebarMenu.dropDown}" th:href="@{${sidebarMenu.menuUrl}}">
                     <span th:class="${sidebarMenu.menuIconClass}"></span>
                     <span th:text="${sidebarMenu.menuName}"></span>
                 </a>

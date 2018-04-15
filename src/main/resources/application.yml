@@ -22,7 +22,7 @@ spring:
     show_sql: true
     generate-ddl: true
   datasource:
-    url: jdbc:mysql://localhost:3306/whitelist?useSSL=false
+    url: jdbc:mysql://localhost:3306/whitelist?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: luke
     password: 123456
 
@@ -30,7 +30,7 @@ spring:
 spring:
   profiles: dev_desk
   datasource:
-    url: jdbc:mysql://192.168.1.115:3306/whitelist?useSSL=false
+    url: jdbc:mysql://192.168.1.115:3306/whitelist?useSSL=false&useUnicode=true&characterEncoding=UTF-8
 
 ---
 spring:

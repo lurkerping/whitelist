@@ -28,7 +28,8 @@ public class WlpMenuAdminController {
     }
 
     @GetMapping("/add.html")
-    public String add() {
+    public String add(Model model) {
+        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPid(-1L));
         return "admin-menu-add";
     }
 

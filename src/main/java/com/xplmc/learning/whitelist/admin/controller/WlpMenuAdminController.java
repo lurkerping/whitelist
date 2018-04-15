@@ -1,5 +1,6 @@
 package com.xplmc.learning.whitelist.admin.controller;
 
+import com.xplmc.learning.whitelist.param.entity.WlpMenu;
 import com.xplmc.learning.whitelist.param.repository.WlpMenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class WlpMenuAdminController {
 
     @GetMapping("/add.html")
     public String add(Model model) {
-        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPid(-1L));
+        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPid(WlpMenu.FIRST_LEVEL_MENU_PID));
         return "admin-menu-add";
     }
 

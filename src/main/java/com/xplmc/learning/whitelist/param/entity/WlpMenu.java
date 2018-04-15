@@ -54,6 +54,16 @@ public class WlpMenu extends BaseEntity implements Serializable {
     private String menuDesc;
 
     /**
+     * menu icon's class
+     */
+    private String menuIconClass;
+
+    /**
+     * menu
+     */
+    private String menuUrl;
+
+    /**
      * create or update comment
      */
     private String menuComment;

@@ -6,10 +6,28 @@
 <div class="admin-sidebar am-offcanvas" id="admin-offcanvas" th:fragment="sidebar">
     <div class="am-offcanvas-bar admin-offcanvas-bar">
         <ul class="am-list admin-sidebar-list">
-            <li><a href="#"><span class="am-icon-home"></span> 首页</a></li>
-            <li><a href="#"><span class="am-icon-table"></span> 表格</a></li>
-            <li><a href="#"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
+            <li th:each="sidebarMenu : ${sidebarMenuList}" th:class="${sidebarMenu.dropDown} ? 'admin-parent'">
+                <a th:if="${sidebarMenu.dropDown}" class="am-cf"
+                   th:data-am-collapse="|{target: '#collapse-nav-${sidebarMenuStat.count}'}|">
+                    <span th:class="${sidebarMenu.menuIconClass}"></span>
+                    <span th:text="${sidebarMenu.menuName}"></span>
+                </a>
+                <ul th:if="${sidebarMenu.dropDown}" class="am-list am-collapse admin-sidebar-sub am-in"
+                    th:id="|collapse-nav-${sidebarMenuStat.count}|">
+                    <li th:each="subMenu : ${sidebarMenu.subMenuDtoList}">
+                        <a href="#">
+                            <span th:class="${subMenu.menuIconClass}"></span>
+                            <span th:text="${subMenu.menuName}"></span>
+                        </a>
+                    </li>
+                </ul>
+                <a th:unless="${sidebarMenu.dropDown}" href="#">
+                    <span th:class="${sidebarMenu.menuIconClass}"></span>
+                    <span th:text="${sidebarMenu.menuName}"></span>
+                </a>
+            </li>
         </ul>
+
     </div>
 </div>
 </body>

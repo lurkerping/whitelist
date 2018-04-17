@@ -2,20 +2,23 @@
     'use strict';
 
     $(function () {
-        //save admin menu
+        //update admin menu
         $('#admin-menu-save-button').click(function () {
             if ($('#admin-menu-add-form').validator('isFormValid')) {
                 var params = {
+                    menuId: $('#admin-menu-id').val(),
                     menuPid: $('#admin-menu-pid').val(),
                     menuName: $('#admin-menu-name').val(),
                     menuDesc: $('#admin-menu-desc').val(),
                     menuIconClass: $('#admin-menu-icon-class').val(),
                     menuUrl: $('#admin-menu-url').val(),
-                    menuComment: $('#admin-menu-comment').val()
+                    menuComment: $('#admin-menu-comment').val(),
+                    createBy: $('#admin-menu-create-by').val(),
+                    createDate: $('#admin-menu-create-date').val()
                 };
                 $.ajax({
-                    type: 'POST',
-                    url: $('form').attr('action'),
+                    type: 'PUT',
+                    url: $('form').attr('action') + '/' + $('#admin-menu-id').val(),
                     data: JSON.stringify(params),
                     success: function () {
                         alert('success');

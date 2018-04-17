@@ -38,6 +38,7 @@ public class WlpMenu extends BaseEntity implements Serializable {
     /**
      * menu parent id
      * -1 means first level menu
+     * default -1
      */
     @NonNull
     private Long menuPid;

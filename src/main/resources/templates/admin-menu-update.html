@@ -4,14 +4,14 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{admin-layout}">
 <head>
-    <title>菜单管理 - 新增</title>
+    <title>菜单管理 - 修改</title>
 </head>
 <body>
 <th:block layout:fragment="content">
     <div class="admin-content-body">
         <div class="am-cf am-padding am-padding-bottom-0">
-            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">菜单管理 - 新增</strong> /
-                <small>Admin Menu Add</small>
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">菜单管理 - 修改</strong> /
+                <small>Admin Menu Update</small>
             </div>
         </div>
 
@@ -19,15 +19,28 @@
 
         <div class="am-g">
             <div class="am-u-sm-12">
-                <form id="admin-menu-add-form" class="am-form am-form-horizontal" th:action="@{/wlp-menu}" data-am-validator>
+                <form id="admin-menu-add-form" class="am-form am-form-horizontal" th:action="@{/wlp-menu}"
+                      data-am-validator>
+
+                    <input type="hidden" id="admin-menu-create-by" th:value="${wlpMenu.createBy}" >
+                    <input type="hidden" id="admin-menu-create-date" th:value="${wlpMenu.createDate}" >
+
+                    <div class="am-form-group">
+                        <label for="admin-menu-id" class="am-u-sm-3 am-form-label">菜单ID / Menu ID</label>
+                        <div class="am-u-sm-9">
+                            <input type="text" id="admin-menu-id" th:value="${wlpMenu.menuId}" readonly>
+                        </div>
+                    </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-pid" class="am-u-sm-3 am-form-label">父级菜单 / Parent Menu</label>
                         <div class="am-u-sm-9">
                             <select id="admin-menu-pid" data-am-selected>
-                                <option value="-1" selected>顶级菜单</option>
-                                <option th:each="firstLevelWlpMenu : ${wlpMenuList}" th:value="${firstLevelWlpMenu.menuId}"
-                                        th:text="${firstLevelWlpMenu.menuName}">空
+                                <option value="-1" th:selected="${wlpMenu.menuPid}== -1">顶级菜单</option>
+                                <option th:each="firstLevelWlpMenu : ${wlpMenuList}"
+                                        th:value="${firstLevelWlpMenu.menuId}"
+                                        th:text="${firstLevelWlpMenu.menuName}"
+                                        th:selected="${wlpMenu.menuPid}== ${firstLevelWlpMenu.menuId}">空
                                 </option>
                             </select>
                         </div>
@@ -36,7 +49,8 @@
                     <div class="am-form-group">
                         <label for="admin-menu-name" class="am-u-sm-3 am-form-label">菜单名称 / Menu Name</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="admin-menu-name" placeholder="菜单名称 / Menu Name" required maxlength="20">
+                            <input type="text" id="admin-menu-name" placeholder="菜单名称 / Menu Name" required
+                                   maxlength="20" th:value="${wlpMenu.menuName}">
                             <small>输入菜单的名字，开始起航。</small>
                         </div>
                     </div>
@@ -44,35 +58,41 @@
                     <div class="am-form-group">
                         <label for="admin-menu-desc" class="am-u-sm-3 am-form-label">菜单描述 / Menu Desc</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="admin-menu-desc" placeholder="这个菜单的主要作用 / What for!" maxlength="100">
+                            <input type="text" id="admin-menu-desc" placeholder="这个菜单的主要作用 / What for!" maxlength="100"
+                                   th:value="${wlpMenu.menuDesc}">
                         </div>
                     </div>
 
                     <div class="am-form-group">
-                        <label for="admin-menu-icon-class" class="am-u-sm-3 am-form-label">菜单图标样式 / Menu Icon Class</label>
+                        <label for="admin-menu-icon-class" class="am-u-sm-3 am-form-label">菜单图标样式 / Menu Icon
+                            Class</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="admin-menu-icon-class" placeholder="菜单的图标样式 / class!" maxlength="100">
+                            <input type="text" id="admin-menu-icon-class" placeholder="菜单的图标样式 / class!" maxlength="100"
+                                   th:value="${wlpMenu.menuIconClass}">
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-url" class="am-u-sm-3 am-form-label">菜单跳转路径 / Menu Href</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="admin-menu-url" placeholder="菜单调整路径 / href!" maxlength="255">
+                            <input type="text" id="admin-menu-url" placeholder="菜单调整路径 / href!" maxlength="255"
+                                   th:value="${wlpMenu.menuUrl}">
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-comment" class="am-u-sm-3 am-form-label">菜单备注 / Menu Comment</label>
                         <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="admin-menu-comment" placeholder="围绕这个菜单的一些记录" maxlength="255"></textarea>
+                            <textarea class="" rows="5" id="admin-menu-comment" placeholder="围绕这个菜单的一些记录"
+                                      maxlength="255" th:text="${wlpMenu.menuComment}"></textarea>
                             <small>250字写出菜单背后的故事...</small>
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button id="admin-menu-save-button" type="button" class="am-btn am-btn-primary">保存修改</button>
+                            <button id="admin-menu-save-button" type="button" class="am-btn am-btn-primary">保存修改
+                            </button>
                             <a id="admin-menu-undo-button" type="button" class="am-btn am-btn-default"
                                th:href="@{/admin/param/wlp-menu/index.html}"><span class="am-icon-undo"></span> 返回</a>
                         </div>
@@ -83,6 +103,6 @@
     </div>
 </th:block>
 <th:block layout:fragment="custom-js">
-    <script th:src="@{/app/js/admin-menu-add.js}"></script>
+    <script th:src="@{/app/js/admin-menu-update.js}"></script>
 </th:block>
 </body>

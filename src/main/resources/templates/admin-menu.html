@@ -34,7 +34,6 @@
                     <table class="am-table am-table-striped am-table-hover table-main">
                         <thead>
                         <tr>
-                            <th class="table-check"><input type="checkbox"/></th>
                             <th class="table-menu-id">ID</th>
                             <th class="table-menu-pid">父级菜单</th>
                             <th class="table-menu-name">菜单名称</th>
@@ -45,12 +44,13 @@
                         </thead>
                         <tbody>
                         <tr th:each="wlpMenu : ${wlpMenuList}">
-                            <td><input type="checkbox"/></td>
-                            <td th:text="${wlpMenu.menuId}">1</td>
+                            <td th:text="${wlpMenu.menuId}">-1</td>
                             <td th:text="${wlpMenu.menuPid}">-1</td>
-                            <td th:text="${wlpMenu.menuName}">测试菜单</td>
-                            <td class="am-hide-sm-only">测试1号</td>
-                            <td class="am-hide-sm-only">2014年9月4日 7:28:47</td>
+                            <td th:text="${wlpMenu.menuName}">--</td>
+                            <td th:text="${#strings.defaultString(wlpMenu.createBy, 'unknow')}" class="am-hide-sm-only">--</td>
+                            <td th:text="${#dates.format(new java.util.Date(wlpMenu.createDate), 'yyyy-MM-dd HH:mm:ss')}"
+                                class="am-hide-sm-only">yyyy-MM-dd hh:mm:ss
+                            </td>
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">

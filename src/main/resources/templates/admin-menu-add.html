@@ -19,7 +19,7 @@
 
         <div class="am-g">
             <div class="am-u-sm-12">
-                <form class="am-form am-form-horizontal" th:action="@{/wlp-menu}">
+                <form id="admin-menu-add-form" class="am-form am-form-horizontal" th:action="@{/wlp-menu}" data-am-validator>
 
                     <div class="am-form-group">
                         <label for="admin-menu-pid" class="am-u-sm-3 am-form-label">父级菜单 / Parent Menu</label>
@@ -36,7 +36,7 @@
                     <div class="am-form-group">
                         <label for="admin-menu-name" class="am-u-sm-3 am-form-label">菜单名称 / Menu Name</label>
                         <div class="am-u-sm-9">
-                            <input type="text" id="admin-menu-name" placeholder="菜单名称 / Menu Name">
+                            <input type="text" id="admin-menu-name" placeholder="菜单名称 / Menu Name" required maxlength="20">
                             <small>输入菜单的名字，开始起航。</small>
                         </div>
                     </div>
@@ -44,28 +44,28 @@
                     <div class="am-form-group">
                         <label for="admin-menu-desc" class="am-u-sm-3 am-form-label">菜单描述 / Menu Desc</label>
                         <div class="am-u-sm-9">
-                            <input type="email" id="admin-menu-desc" placeholder="这个菜单的主要作用 / What for!">
+                            <input type="text" id="admin-menu-desc" placeholder="这个菜单的主要作用 / What for!" maxlength="100">
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-icon-class" class="am-u-sm-3 am-form-label">菜单图标样式 / Menu Icon Class</label>
                         <div class="am-u-sm-9">
-                            <input type="email" id="admin-menu-icon-class" placeholder="菜单的图标样式 / class!">
+                            <input type="text" id="admin-menu-icon-class" placeholder="菜单的图标样式 / class!" maxlength="100">
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-url" class="am-u-sm-3 am-form-label">菜单跳转路径 / Menu Href</label>
                         <div class="am-u-sm-9">
-                            <input type="email" id="admin-menu-url" placeholder="菜单调整路径 / href!">
+                            <input type="text" id="admin-menu-url" placeholder="菜单调整路径 / href!" maxlength="255">
                         </div>
                     </div>
 
                     <div class="am-form-group">
                         <label for="admin-menu-comment" class="am-u-sm-3 am-form-label">菜单备注 / Menu Comment</label>
                         <div class="am-u-sm-9">
-                            <textarea class="" rows="5" id="admin-menu-comment" placeholder="围绕这个菜单的一些记录"></textarea>
+                            <textarea class="" rows="5" id="admin-menu-comment" placeholder="围绕这个菜单的一些记录" maxlength="255"></textarea>
                             <small>250字写出菜单背后的故事...</small>
                         </div>
                     </div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin-layout}">
+<head>
+    <title>系统环境管理</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="admin-content-body">
+        <div class="am-cf am-padding am-padding-bottom-0">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">系统环境管理</strong> /
+                <small>Admin Environment</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="am-g">
+            <div class="am-u-sm-12">
+                <form class="am-form" th:action="@{/wlp-environment}">
+                    <table class="am-table am-table-striped am-table-hover table-main">
+                        <thead>
+                        <tr>
+                            <th class="table-environment-id">ID</th>
+                            <th class="table-environment-code">父级环境</th>
+                            <th class="table-environment-name">环境名称</th>
+                            <th class="table-create-by am-hide-sm-only">作者</th>
+                            <th class="table-create-date am-hide-sm-only">修改日期</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="wlpEnvironment : ${wlpEnvironmentList}">
+                            <td th:text="${wlpEnvironment.envId}">-1</td>
+                            <td th:text="${wlpEnvironment.envCode}">-1</td>
+                            <td th:text="${wlpEnvironment.envName}">--</td>
+                            <td th:text="${#strings.defaultString(wlpEnvironment.createBy, 'unknow')}"
+                                class="am-hide-sm-only">
+                                --
+                            </td>
+                            <td th:text="${#dates.format(new java.util.Date(wlpEnvironment.createDate ?: 0), 'yyyy-MM-dd HH:mm:ss')}"
+                                class="am-hide-sm-only">2000-01-01 00:00:00
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="am-cf">
+                        共 15 条记录
+                        <div class="am-fr">
+                            <ul class="am-pagination">
+                                <li class="am-disabled"><a href="#">«</a></li>
+                                <li class="am-active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">»</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr/>
+                    <p>注：.....</p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</th:block>
+<th:block layout:fragment="custom-js">
+    <script th:src="@{/app/js/admin-placeholder.js}"></script>
+</th:block>
+</body>

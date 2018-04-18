@@ -50,8 +50,8 @@
                             <td th:text="${#strings.defaultString(wlpMenu.createBy, 'unknow')}" class="am-hide-sm-only">
                                 --
                             </td>
-                            <td th:text="${#dates.format(new java.util.Date(wlpMenu.createDate), 'yyyy-MM-dd HH:mm:ss')}"
-                                class="am-hide-sm-only">yyyy-MM-dd hh:mm:ss
+                            <td th:text="${#dates.format(new java.util.Date(wlpMenu.createDate ?: 0), 'yyyy-MM-dd HH:mm:ss')}"
+                                class="am-hide-sm-only">2000-01-01 00:00:00
                             </td>
                             <td>
                                 <div class="am-btn-toolbar">
@@ -98,8 +98,8 @@
                 你，确定要删除这条记录吗？
             </div>
             <div class="am-modal-footer">
-                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
                 <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+                <span class="am-modal-btn" data-am-modal-cancel>取消</span>
             </div>
         </div>
     </div>

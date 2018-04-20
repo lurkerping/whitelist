@@ -21,8 +21,10 @@
             <div class="am-u-sm-12">
                 <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
-                        <a type="button" class="am-btn am-btn-default" th:href="@{/admin/param/wlp-menu/add.html}"><span
-                                class="am-icon-plus"></span> 新增</a>
+                        <button type="button" class="am-btn am-btn-default"
+                                th:onclick="'window.location.href = \'' + @{/admin/param/wlp-menu/add.html} + '\''">
+                            <span class="am-icon-plus"></span> 新增
+                        </button>
                     </div>
                 </div>
             </div>
@@ -56,11 +58,10 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <a type="button" class="am-btn am-btn-default"
-                                           th:href="@{/admin/param/wlp-menu/update.html/{menuId}(menuId=${wlpMenu.menuId})}">
+                                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary"
+                                                th:onclick="'window.location.href = \'' + @{/admin/param/wlp-menu/update.html/{menuId}(menuId=${wlpMenu.menuId})} + '\''">
                                             <span class="am-icon-pencil-square-o"></span> 编辑
-                                        </a>
-
+                                        </button>
                                         <button class="admin-menu-delete-button am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
                                             <span class="am-icon-trash-o"></span> 删除
                                         </button>

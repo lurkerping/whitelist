@@ -1,9 +1,13 @@
 package com.xplmc.learning.whitelist.admin.controller;
 
+import com.xplmc.learning.whitelist.common.constant.PageConstants;
 import com.xplmc.learning.whitelist.param.entity.WlpMenu;
 import com.xplmc.learning.whitelist.param.repository.WlpMenuRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +32,10 @@ public class WlpMenuAdminController {
     private WlpMenuRepository wlpMenuRepository;
 
     @GetMapping("/index.html")
-    public String index(Model model) {
-        model.addAttribute("wlpMenuList", wlpMenuRepository.findAll());
+    public String index(Model model,
+                        @PageableDefault(value = PageConstants.DEFAULT_PAGE_SIZE,
+                                sort = {"menuId"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("page", wlpMenuRepository.findAll(pageable));
         return "admin-menu";
     }
 

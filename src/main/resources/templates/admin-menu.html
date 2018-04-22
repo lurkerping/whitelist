@@ -46,7 +46,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="wlpMenu : ${wlpMenuList}">
+                        <tr th:each="wlpMenu : ${page.content}">
                             <td th:text="${wlpMenu.menuId}">-1</td>
                             <td th:text="${wlpMenu.menuPid}">-1</td>
                             <td th:text="${wlpMenu.menuName}">--</td>
@@ -74,16 +74,24 @@
                         </tbody>
                     </table>
                     <div class="am-cf">
-                        共 15 条记录
+                        共 <span th:text="${page.totalElements}"></span> 条记录
                         <div class="am-fr">
                             <ul class="am-pagination">
-                                <li class="am-disabled"><a href="#">«</a></li>
-                                <li class="am-active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">»</a></li>
+                                <li th:class="${page.first} ? 'am-disabled'">
+                                    <a th:href="@{/admin/param/wlp-menu/index.html}">首页</a>
+                                </li>
+                                <li th:class="${!page.hasPrevious()} ? 'am-disabled'">
+                                    <a th:href="@{/admin/param/wlp-menu/index.html(page=${page.number - 1})}">上一页</a>
+                                </li>
+                                <li class="am-active">
+                                    <a href="#" th:text="${page.number + 1}"></a>
+                                </li>
+                                <li th:class="${!page.hasNext()} ? 'am-disabled'">
+                                    <a th:href="@{/admin/param/wlp-menu/index.html(page=${page.number + 1})}">下一页</a>
+                                </li>
+                                <li th:class="${page.last} ? 'am-disabled'">
+                                    <a th:href="@{/admin/param/wlp-menu/index.html(page=${page.totalPages - 1})}">尾页</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

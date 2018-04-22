@@ -8,6 +8,7 @@
                 var params = {
                     menuPid: $('#admin-menu-pid').val(),
                     menuName: $('#admin-menu-name').val(),
+                    menuPriority: $('#admin-menu-priority').val(),
                     menuDesc: $('#admin-menu-desc').val(),
                     menuIconClass: $('#admin-menu-icon-class').val(),
                     menuUrl: $('#admin-menu-url').val(),

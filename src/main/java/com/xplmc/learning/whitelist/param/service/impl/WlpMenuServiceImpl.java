@@ -28,7 +28,7 @@ public class WlpMenuServiceImpl implements WlpMenuService {
     @Override
     public List<WlpMenuDto> findSidebarMenu() {
         //find all first level menus
-        List<WlpMenu> firstLevelMenuList = wlpMenuRepository.findByMenuPid(WlpMenu.FIRST_LEVEL_MENU_PID);
+        List<WlpMenu> firstLevelMenuList = wlpMenuRepository.findByMenuPidOrderByMenuPriorityAsc(WlpMenu.FIRST_LEVEL_MENU_PID);
 
         //convert wlpMenu to wlpMenuDto
         List<WlpMenuDto> firstLevelMenuDtoList = new ArrayList<>();
@@ -37,7 +37,7 @@ public class WlpMenuServiceImpl implements WlpMenuService {
             BeanUtils.copyProperties(wlpMenu, wlpMenuDto);
 
             //find menu's subMenu
-            List<WlpMenu> subMenuList = wlpMenuRepository.findByMenuPid(wlpMenu.getMenuId());
+            List<WlpMenu> subMenuList = wlpMenuRepository.findByMenuPidOrderByMenuPriorityAsc(wlpMenu.getMenuId());
 
             //convert subMenu to subMenuDto
             List<WlpMenuDto> subMenuDtoList = new ArrayList<>();

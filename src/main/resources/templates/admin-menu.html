@@ -39,6 +39,7 @@
                             <th class="table-menu-id">ID</th>
                             <th class="table-menu-pid">父级菜单</th>
                             <th class="table-menu-name">菜单名称</th>
+                            <th class="table-menu-priority">菜单排序</th>
                             <th class="table-create-by am-hide-sm-only">作者</th>
                             <th class="table-create-date am-hide-sm-only">修改日期</th>
                             <th class="table-set">操作</th>
@@ -49,6 +50,7 @@
                             <td th:text="${wlpMenu.menuId}">-1</td>
                             <td th:text="${wlpMenu.menuPid}">-1</td>
                             <td th:text="${wlpMenu.menuName}">--</td>
+                            <td th:text="${wlpMenu.menuPriority}">100</td>
                             <td th:text="${#strings.defaultString(wlpMenu.createBy, 'unknow')}" class="am-hide-sm-only">
                                 --
                             </td>

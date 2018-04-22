@@ -22,6 +22,6 @@ public interface WlpMenuRepository extends PagingAndSortingRepository<WlpMenu, L
      * @param menuPid
      * @return
      */
-    List<WlpMenu> findByMenuPid(Long menuPid);
+    List<WlpMenu> findByMenuPidOrderByMenuPriorityAsc(Long menuPid);
 
 }

@@ -56,6 +56,14 @@
                     </div>
 
                     <div class="am-form-group">
+                        <label for="admin-menu-priority" class="am-u-sm-3 am-form-label">菜单排序 / Menu Priority</label>
+                        <div class="am-u-sm-9">
+                            <input type="number" id="admin-menu-priority" placeholder="菜单排序 / Menu Priority"
+                                   th:value="${wlpMenu.menuPriority}" min="0" max="999999">
+                            <small>数字越小，菜单越前。</small>
+                        </div>
+                    </div>
+                    <div class="am-form-group">
                         <label for="admin-menu-desc" class="am-u-sm-3 am-form-label">菜单描述 / Menu Desc</label>
                         <div class="am-u-sm-9">
                             <input type="text" id="admin-menu-desc" placeholder="这个菜单的主要作用 / What for!" maxlength="100"

@@ -69,4 +69,9 @@ public class WlpMenu extends BaseEntity implements Serializable {
      */
     private String menuComment;
 
+    /**
+     * menu priority, smaller goes front
+     */
+    private Long menuPriority = 100L;
+
 }

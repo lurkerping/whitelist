@@ -35,14 +35,14 @@ public class WlpMenuAdminController {
 
     @GetMapping("/add.html")
     public String add(Model model) {
-        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPid(WlpMenu.FIRST_LEVEL_MENU_PID));
+        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPidOrderByMenuPriorityAsc(WlpMenu.FIRST_LEVEL_MENU_PID));
         return "admin-menu-add";
     }
 
     @GetMapping("/update.html/{menuId}")
     public String update(Model model, @PathVariable("menuId") Long menuId) {
         log.info("update menu, menuId: {}", menuId);
-        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPid(WlpMenu.FIRST_LEVEL_MENU_PID));
+        model.addAttribute("wlpMenuList", wlpMenuRepository.findByMenuPidOrderByMenuPriorityAsc(WlpMenu.FIRST_LEVEL_MENU_PID));
         Optional<WlpMenu> wlpMenuOptional = wlpMenuRepository.findById(menuId);
 
         //if wlpMenu is not present, using default

@@ -39,7 +39,7 @@ public class WlpMenuServiceTest {
         WlpMenu wlpMenu = WlpMenu.of(WlpMenu.FIRST_LEVEL_MENU_PID, code);
         wlpMenuRepository.save(wlpMenu);
 
-        List<WlpMenu> wlpMenuList = wlpMenuRepository.findByMenuPid(WlpMenu.FIRST_LEVEL_MENU_PID);
+        List<WlpMenu> wlpMenuList = wlpMenuRepository.findByMenuPidOrderByMenuPriorityAsc(WlpMenu.FIRST_LEVEL_MENU_PID);
         Assert.assertTrue(wlpMenuList.size() > 0);
     }
 

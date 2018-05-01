@@ -3,10 +3,6 @@ spring:
     name: whitelist
   profiles:
     active: dev
-  jpa:
-    hibernate:
-      ddl-auto: update
-    open-in-view: false
   thymeleaf:
     mode: HTML5
 server:
@@ -14,29 +10,34 @@ server:
     context-path: /whitelist
   port: 8110
 
----
+# jpa and datasource configuration
 spring:
-  profiles: dev
   jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
     database: MYSQL
-    show_sql: true
+    show_sql: false
     generate-ddl: true
   datasource:
     url: jdbc:mysql://localhost:3306/whitelist?useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: luke
     password: 123456
 
+# debug sql mode
+---
+spring:
+  profiles: dev_debug_sql
+  jpa:
+    show_sql: true
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
+
+# develop on desk top mode
 ---
 spring:
   profiles: dev_desk
   datasource:
     url: jdbc:mysql://192.168.1.115:3306/whitelist?useSSL=false&useUnicode=true&characterEncoding=UTF-8
-
----
-spring:
-  profiles: ut
-  jpa:
-    database: H2
-    show_sql: false
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=TRUE
